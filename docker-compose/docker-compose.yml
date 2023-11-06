@@ -1,0 +1,77 @@
+version: '3.7'
+services:
+  hazelcast-mc:
+    image: hazelcast/management-center:${HAZELCAST_MANAGEMENT_CENTER_VERSION}
+    container_name: hazelcast-mc
+    ports:
+      - "8090:8080"
+    environment:
+      MC_DEFAULT_CLUSTER: ${HAZELCAST_MC_CLUSTER}
+      MC_DEFAULT_CLUSTER_MEMBERS: "hazelcast-1:5701,hazelcast-2:5702,hazelcast-3:5703"
+      MC_CONTEXT_PATH: ${HAZELCAST_MC_CONTEXT_PATH}
+      MC_ADMIN_USER: ${HAZELCAST_MC_ADMIN_USER}
+      MC_ADMIN_PASSWORD: ${HAZELCAST_MC_ADMIN_PASSWORD}
+      LOGGING_LEVEL: ${HAZELCAST_LOGGING_LEVEL}
+    volumes:
+      - hazelcast-mc-data:/data
+    networks:
+      - ${EDM_GLOBAL_NETWORK:-hazelcast-net}
+  hazelcast-1:
+    image: hazelcast/hazelcast:${HAZELCAST_VERSION}
+    container_name: hazelcast-1
+    ports:
+      - "5701:5701"
+      - "8100:8080"
+    environment:
+      HZ_NETWORK_PUBLICADDRESS: ${HZ_NETWORK_PUBLICADDRESS}:5701
+      HZ_CLUSTERNAME: ${HAZELCAST_MC_CLUSTER}
+      HZ_NETWORK_PORT_PORT: ${HAZELCAST_NETWORK_PORT_PORT}
+      HZ_NETWORK_PORT_AUTOINCREMENT: ${HAZELCAST_NETWORK_PORT_AUTOINCREMENT}
+      HZ_NETWORK_PORT_PORTCOUNT: ${HAZELCAST_NETWORK_PORT_PORTCOUNT}
+      LOGGING_LEVEL: ${HAZELCAST_LOGGING_LEVEL}
+      PROMETHEUS_PORT: 8080
+      JAVA_OPTS: "-Dhazelcast.jmx=true"
+    networks:
+      - ${EDM_GLOBAL_NETWORK:-hazelcast-net}
+  hazelcast-2:
+    image: hazelcast/hazelcast:${HAZELCAST_VERSION}
+    container_name: hazelcast-2
+    ports:
+      - "5702:5701"
+      - "8101:8080"
+    environment:
+      HZ_NETWORK_PUBLICADDRESS: ${HZ_NETWORK_PUBLICADDRESS}:5702
+      HZ_CLUSTERNAME: ${HAZELCAST_MC_CLUSTER}
+      HZ_NETWORK_PORT_PORT: ${HAZELCAST_NETWORK_PORT_PORT}
+      HZ_NETWORK_PORT_AUTOINCREMENT: ${HAZELCAST_NETWORK_PORT_AUTOINCREMENT}
+      HZ_NETWORK_PORT_PORTCOUNT: ${HAZELCAST_NETWORK_PORT_PORTCOUNT}
+      LOGGING_LEVEL: ${HAZELCAST_LOGGING_LEVEL}
+      PROMETHEUS_PORT: 8080
+      JAVA_OPTS: "-Dhazelcast.jmx=true"
+    networks:
+      - ${EDM_GLOBAL_NETWORK:-hazelcast-net}
+  hazelcast-3:
+    image: hazelcast/hazelcast:${HAZELCAST_VERSION}
+    container_name: hazelcast-3
+    ports:
+      - "5703:5701"
+      - "8102:8080"
+    environment:
+      HZ_NETWORK_PUBLICADDRESS: ${HZ_NETWORK_PUBLICADDRESS}:5703
+      HZ_CLUSTERNAME: ${HAZELCAST_MC_CLUSTER}
+      HZ_NETWORK_PORT_PORT: ${HAZELCAST_NETWORK_PORT_PORT}
+      HZ_NETWORK_PORT_AUTOINCREMENT: ${HAZELCAST_NETWORK_PORT_AUTOINCREMENT}
+      HZ_NETWORK_PORT_PORTCOUNT: ${HAZELCAST_NETWORK_PORT_PORTCOUNT}
+      LOGGING_LEVEL: ${HAZELCAST_LOGGING_LEVEL}
+      PROMETHEUS_PORT: 8080
+      JAVA_OPTS: "-Dhazelcast.jmx=true"
+    networks:
+      - ${EDM_GLOBAL_NETWORK:-hazelcast-net}
+
+volumes:
+  hazelcast-mc-data:
+    driver: local
+
+networks:
+  hazelcast-net:
+    driver: bridge

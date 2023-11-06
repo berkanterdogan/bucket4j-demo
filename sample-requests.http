@@ -1,0 +1,169 @@
+###
+POST http://localhost:8081/bucket4j-demo/api/area-calculation/rectangle
+Content-Type: application/json
+
+{
+  "length": 5.0,
+  "width": 3.0
+}
+
+###
+POST http://localhost:8082/bucket4j-demo/api/area-calculation/rectangle
+Content-Type: application/json
+
+{
+  "length": 5.0,
+  "width": 3.0
+}
+
+###
+POST http://localhost:8081/bucket4j-demo/api/area-calculation/rectangle
+Content-Type: application/json
+
+{
+  "length": 5.0,
+  "width": 3.0
+}
+
+###
+POST http://localhost:8082/bucket4j-demo/api/area-calculation/rectangle
+Content-Type: application/json
+
+{
+  "length": 5.0,
+  "width": 3.0
+}
+
+###
+POST http://localhost:8081/bucket4j-demo/api/area-calculation/rectangle
+Content-Type: application/json
+
+{
+  "length": 5.0,
+  "width": 3.0
+}
+
+###
+POST http://localhost:8082/bucket4j-demo/api/area-calculation/rectangle
+Content-Type: application/json
+
+{
+  "length": 5.0,
+  "width": 3.0
+}
+
+###
+POST http://localhost:8081/bucket4j-demo/api/area-calculation/rectangle
+Content-Type: application/json
+
+{
+  "length": 5.0,
+  "width": 3.0
+}
+
+###
+POST http://localhost:8082/bucket4j-demo/api/area-calculation/rectangle
+Content-Type: application/json
+
+{
+  "length": 5.0,
+  "width": 3.0
+}
+
+###
+POST http://localhost:8081/bucket4j-demo/api/area-calculation/rectangle
+Content-Type: application/json
+
+{
+  "length": 5.0,
+  "width": 3.0
+}
+
+###
+POST http://localhost:8082/bucket4j-demo/api/area-calculation/rectangle
+Content-Type: application/json
+
+{
+  "length": 5.0,
+  "width": 3.0
+}
+
+###
+POST http://localhost:8081/bucket4j-demo/api/area-calculation/square
+Content-Type: application/json
+
+{
+  "length": 5.0
+}
+
+###
+POST http://localhost:8082/bucket4j-demo/api/area-calculation/square
+Content-Type: application/json
+
+{
+  "length": 5.0
+}
+
+###
+POST http://localhost:8081/bucket4j-demo/api/area-calculation/square
+Content-Type: application/json
+
+{
+  "length": 5.0
+}
+
+###
+POST http://localhost:8082/bucket4j-demo/api/area-calculation/square
+Content-Type: application/json
+
+{
+  "length": 5.0
+}
+
+###
+POST http://localhost:8081/bucket4j-demo/api/area-calculation/square
+Content-Type: application/json
+
+{
+  "length": 5.0
+}
+
+###
+POST http://localhost:8082/bucket4j-demo/api/area-calculation/square
+Content-Type: application/json
+
+{
+  "length": 5.0
+}
+
+###
+POST http://localhost:8081/bucket4j-demo/api/area-calculation/square
+Content-Type: application/json
+
+{
+  "length": 5.0
+}
+
+###
+POST http://localhost:8082/bucket4j-demo/api/area-calculation/square
+Content-Type: application/json
+
+{
+  "length": 5.0
+}
+
+###
+POST http://localhost:8081/bucket4j-demo/api/area-calculation/square
+Content-Type: application/json
+
+{
+  "length": 5.0
+}
+
+###
+POST http://localhost:8082/bucket4j-demo/api/area-calculation/square
+Content-Type: application/json
+
+{
+  "length": 5.0
+}

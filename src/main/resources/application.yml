@@ -1,0 +1,17 @@
+server:
+  servlet:
+    context-path: /bucket4j-demo
+  port: ${PORT:8081}
+spring:
+  application:
+    name: bucket4j-demo
+
+bucket4j-demo:
+  hazelcast:
+    cluster-name: hazelcast-cluster
+    urls: '${HAZELCAST_URLS: localhost:5701, localhost:5702, localhost:5703}'
+    map:
+      time-to-live-secs: '${HAZELCAST_MAP_TIME_TO_LIVE_SECS:0}'
+      max-idle-secs: '${HAZELCAST_MAP_MAX_IDLE_SECS:0}'
+  rate-limiter:
+      object-value: "${RATE_LIMITER_OBJECT_VALUE:{  \"limiters\": [    {      \"path\": \"/\",      \"limits\": [        {          \"timeUnit\": \"seconds\",          \"timeValue\": \"1\",          \"capacity\": \"1\"        },        {          \"timeUnit\": \"minutes\",          \"timeValue\": \"5\",          \"capacity\": \"10\"        },        {          \"timeUnit\": \"hours\",          \"timeValue\": \"1\",          \"capacity\": \"100\"        },        {          \"timeUnit\": \"days\",          \"timeValue\": \"1\",          \"capacity\": \"1000\"        }      ]    },    {      \"path\": \"/api/area-calculation/rectangle\",      \"limits\": [        {          \"timeUnit\": \"seconds\",          \"timeValue\": \"1\",          \"capacity\": \"1\"        },        {          \"timeUnit\": \"minutes\",          \"timeValue\": \"1\",          \"capacity\": \"5\"        },        {          \"timeUnit\": \"hours\",          \"timeValue\": \"1\",          \"capacity\": \"10\"        },        {          \"timeUnit\": \"days\",          \"timeValue\": \"1\",          \"capacity\": \"15\"        }      ]    }  ]}}"
