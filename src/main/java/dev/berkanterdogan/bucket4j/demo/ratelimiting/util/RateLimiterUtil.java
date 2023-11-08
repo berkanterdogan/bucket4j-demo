@@ -7,9 +7,6 @@ import io.github.bucket4j.BucketConfiguration;
 import io.github.bucket4j.ConfigurationBuilder;
 
 import java.time.Duration;
-import java.time.Instant;
-import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 public class RateLimiterUtil {
@@ -25,51 +22,30 @@ public class RateLimiterUtil {
         Long capacity = rateLimit.getCapacity();
 
         Bandwidth bandwidth;
-        Instant firstRefillTime;
         if ("seconds".equalsIgnoreCase(timeUnit)) {
-            firstRefillTime = ZonedDateTime.now()
-                    .truncatedTo(ChronoUnit.SECONDS)
-                    .plusSeconds(1)
-                    .toInstant();
             bandwidth = BandwidthBuilder.builder()
                     .capacity(capacity)
-                    .refillIntervallyAligned(capacity, Duration.ofSeconds(timeValue), firstRefillTime)
+                    .refillIntervally(capacity, Duration.ofSeconds(timeValue))
                     .build();
         } else if ("minutes".equalsIgnoreCase(timeUnit)) {
-            firstRefillTime = ZonedDateTime.now()
-                    .truncatedTo(ChronoUnit.MINUTES)
-                    .plusMinutes(1)
-                    .toInstant();
             bandwidth = BandwidthBuilder.builder()
                     .capacity(capacity)
-                    .refillIntervallyAligned(capacity, Duration.ofMinutes(timeValue), firstRefillTime)
+                    .refillIntervally(capacity, Duration.ofMinutes(timeValue))
                     .build();
         } else if ("hours".equalsIgnoreCase(timeUnit)) {
-            firstRefillTime = ZonedDateTime.now()
-                    .truncatedTo(ChronoUnit.HOURS)
-                    .plusHours(1)
-                    .toInstant();
             bandwidth = BandwidthBuilder.builder()
                     .capacity(capacity)
-                    .refillIntervallyAligned(capacity, Duration.ofHours(timeValue), firstRefillTime)
+                    .refillIntervally(capacity, Duration.ofHours(timeValue))
                     .build();
         } else if ("days".equalsIgnoreCase(timeUnit)) {
-            firstRefillTime = ZonedDateTime.now()
-                    .truncatedTo(ChronoUnit.DAYS)
-                    .plusDays(1)
-                    .toInstant();
             bandwidth = BandwidthBuilder.builder()
                     .capacity(capacity)
-                    .refillIntervallyAligned(capacity, Duration.ofDays(timeValue), firstRefillTime)
+                    .refillIntervally(capacity, Duration.ofDays(timeValue))
                     .build();
         } else {
-            firstRefillTime = ZonedDateTime.now()
-                    .truncatedTo(ChronoUnit.HOURS)
-                    .plusHours(1)
-                    .toInstant();
             bandwidth = BandwidthBuilder.builder()
                     .capacity(100)
-                    .refillIntervallyAligned(100, Duration.ofHours(timeValue), firstRefillTime)
+                    .refillIntervally(100, Duration.ofHours(timeValue))
                     .build();
         }
 
